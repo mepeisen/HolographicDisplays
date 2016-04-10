@@ -14,16 +14,21 @@
   <dependencies>
   	<dependency>
   		<groupId>org.spigotmc</groupId>
-  		<artifactId>spigot-api</artifactId>
+  		<artifactId>spigot</artifactId>
   		<version>1.9.2-R0.1-SNAPSHOT</version>
   		<scope>provided</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.comphenix.protocol</groupId>
+  		<artifactId>ProtocolLib</artifactId>
+  		<version>4.0.0-SNAPSHOT</version>
   	</dependency>
   </dependencies>
   
   <build>
   <resources>
   	<resource>
-  		<directory>HolographicsDisplays</directory>
+  		<directory>HolographicDisplays</directory>
   		<includes>
   			<include>config.yml</include>
   			<include>database.yml</include>
@@ -42,8 +47,8 @@
             <goals><goal>add-source</goal></goals>
             <configuration>
                 <sources>
-                    <source>HolographicsDisplays/API</source>
-                    <source>HolographicsDisplays/Plugin</source>
+                    <source>HolographicDisplays/API</source>
+                    <source>HolographicDisplays/Plugin</source>
                 </sources>
             </configuration>
         </execution>

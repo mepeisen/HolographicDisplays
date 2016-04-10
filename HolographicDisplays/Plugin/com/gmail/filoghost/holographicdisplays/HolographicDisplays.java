@@ -112,26 +112,27 @@ public class HolographicDisplays extends JavaPlugin {
 		}
 		
 		// It's simple, we don't need reflection.
-		if ("v1_6_R3".equals(version)) {
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_6_R3.NmsManagerImpl();
-		} else if ("v1_7_R1".equals(version)) {
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_7_R1.NmsManagerImpl();
-		} else if ("v1_7_R2".equals(version)) {
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_7_R2.NmsManagerImpl();
-		} else if ("v1_7_R3".equals(version)) {
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_7_R3.NmsManagerImpl();
-		} else if ("v1_7_R4".equals(version)) {
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_7_R4.NmsManagerImpl();
-		} else if ("v1_8_R1".equals(version)) {
-			is18orGreater = true;
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_8_R1.NmsManagerImpl();
-		} else if ("v1_8_R2".equals(version)) {
-			is18orGreater = true;
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_8_R2.NmsManagerImpl();
-		} else if ("v1_8_R3".equals(version)) {
-			is18orGreater = true;
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_8_R3.NmsManagerImpl();
-		} else if ("v1_9_R1".equals(version)) {
+//		if ("v1_6_R3".equals(version)) {
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_6_R3.NmsManagerImpl();
+//		} else if ("v1_7_R1".equals(version)) {
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_7_R1.NmsManagerImpl();
+//		} else if ("v1_7_R2".equals(version)) {
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_7_R2.NmsManagerImpl();
+//		} else if ("v1_7_R3".equals(version)) {
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_7_R3.NmsManagerImpl();
+//		} else if ("v1_7_R4".equals(version)) {
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_7_R4.NmsManagerImpl();
+//		} else if ("v1_8_R1".equals(version)) {
+//			is18orGreater = true;
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_8_R1.NmsManagerImpl();
+//		} else if ("v1_8_R2".equals(version)) {
+//			is18orGreater = true;
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_8_R2.NmsManagerImpl();
+//		} else if ("v1_8_R3".equals(version)) {
+//			is18orGreater = true;
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_8_R3.NmsManagerImpl();
+//		} else
+		if ("v1_9_R1".equals(version)) {
 			is18orGreater = true;
 			is19orGreater = true;
 			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_9_R1.NmsManagerImpl();
