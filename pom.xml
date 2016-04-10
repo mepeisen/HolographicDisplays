@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>filoghost</groupId>
+  <artifactId>HolographicsDisplays</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <parent>
+  	<groupId>eu.xworlds</groupId>
+  	<artifactId>java-parent</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>org.spigotmc</groupId>
+  		<artifactId>spigot-api</artifactId>
+  		<version>1.9.2-R0.1-SNAPSHOT</version>
+  		<scope>provided</scope>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+  <resources>
+  	<resource>
+  		<directory>HolographicsDisplays</directory>
+  		<includes>
+  			<include>config.yml</include>
+  			<include>database.yml</include>
+  			<include>plugin.yml</include>
+  			<include>symbols.yml</include>
+  		</includes>
+  	</resource>
+  </resources>
+  <plugins>
+  	<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>build-helper-maven-plugin</artifactId>
+    <executions>
+        <execution>
+            <phase>generate-sources</phase>
+            <goals><goal>add-source</goal></goals>
+            <configuration>
+                <sources>
+                    <source>HolographicsDisplays/API</source>
+                    <source>HolographicsDisplays/Plugin</source>
+                </sources>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+</plugins>
+  </build>
+  
+</project>
