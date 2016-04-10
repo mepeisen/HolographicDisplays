@@ -10,6 +10,10 @@
   	<version>0.0.1-SNAPSHOT</version>
   </parent>
   
+  <properties>
+  	<project.build.sourceEncoding>Cp1252</project.build.sourceEncoding>
+  </properties>
+  
   
   <dependencies>
   	<dependency>
