@@ -1,25 +1,24 @@
-package com.gmail.filoghost.holographicdisplays.nms.v1_9_R1;
+package com.gmail.filoghost.holographicdisplays.nms.v1_9_R2;
 
-import net.minecraft.server.v1_9_R1.AxisAlignedBB;
-import net.minecraft.server.v1_9_R1.DamageSource;
-import net.minecraft.server.v1_9_R1.EntityArmorStand;
-import net.minecraft.server.v1_9_R1.EntityHuman;
-import net.minecraft.server.v1_9_R1.EntityPlayer;
-import net.minecraft.server.v1_9_R1.EnumHand;
-import net.minecraft.server.v1_9_R1.EnumInteractionResult;
-import net.minecraft.server.v1_9_R1.EnumItemSlot;
-import net.minecraft.server.v1_9_R1.ItemStack;
-import net.minecraft.server.v1_9_R1.NBTTagCompound;
-import net.minecraft.server.v1_9_R1.PacketPlayOutEntityTeleport;
-import net.minecraft.server.v1_9_R1.SoundEffect;
-import net.minecraft.server.v1_9_R1.Vec3D;
-import net.minecraft.server.v1_9_R1.World;
+import net.minecraft.server.v1_9_R2.AxisAlignedBB;
+import net.minecraft.server.v1_9_R2.DamageSource;
+import net.minecraft.server.v1_9_R2.EntityArmorStand;
+import net.minecraft.server.v1_9_R2.EntityHuman;
+import net.minecraft.server.v1_9_R2.EntityPlayer;
+import net.minecraft.server.v1_9_R2.EnumHand;
+import net.minecraft.server.v1_9_R2.EnumInteractionResult;
+import net.minecraft.server.v1_9_R2.EnumItemSlot;
+import net.minecraft.server.v1_9_R2.ItemStack;
+import net.minecraft.server.v1_9_R2.NBTTagCompound;
+import net.minecraft.server.v1_9_R2.PacketPlayOutEntityTeleport;
+import net.minecraft.server.v1_9_R2.SoundEffect;
+import net.minecraft.server.v1_9_R2.Vec3D;
+import net.minecraft.server.v1_9_R2.World;
 
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftEntity;
 
 import com.gmail.filoghost.holographicdisplays.nms.interfaces.entity.NMSArmorStand;
 import com.gmail.filoghost.holographicdisplays.object.line.CraftHologramLine;
-import com.gmail.filoghost.holographicdisplays.util.ReflectionUtils;
 import com.gmail.filoghost.holographicdisplays.util.Utils;
 
 public class EntityNMSArmorStand extends EntityArmorStand implements NMSArmorStand {
@@ -36,11 +35,6 @@ public class EntityNMSArmorStand extends EntityArmorStand implements NMSArmorSta
 		super.setBasePlate(true);
 		super.setMarker(true);
 		this.parentPiece = parentPiece;
-		try {
-			ReflectionUtils.setPrivateField(EntityArmorStand.class, this, "bz", Integer.MAX_VALUE);
-		} catch (Exception e) {
-			// There's still the overridden method.
-		}
 		forceSetBoundingBox(new NullBoundingBox());
 	}
 	
@@ -63,8 +57,9 @@ public class EntityNMSArmorStand extends EntityArmorStand implements NMSArmorSta
 	}
 	
 	@Override
-	public void e(NBTTagCompound nbttagcompound) {
+	public NBTTagCompound e(NBTTagCompound nbttagcompound) {
 		// Do not save NBT.
+		return nbttagcompound;
 	}
 	
 	@Override

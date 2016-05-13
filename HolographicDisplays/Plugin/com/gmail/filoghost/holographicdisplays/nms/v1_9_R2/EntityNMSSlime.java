@@ -1,18 +1,18 @@
-package com.gmail.filoghost.holographicdisplays.nms.v1_9_R1;
+package com.gmail.filoghost.holographicdisplays.nms.v1_9_R2;
 
-import net.minecraft.server.v1_9_R1.EntityDamageSource;
-import net.minecraft.server.v1_9_R1.EntityPlayer;
-import net.minecraft.server.v1_9_R1.AxisAlignedBB;
-import net.minecraft.server.v1_9_R1.DamageSource;
-import net.minecraft.server.v1_9_R1.Entity;
-import net.minecraft.server.v1_9_R1.EntitySlime;
-import net.minecraft.server.v1_9_R1.NBTTagCompound;
-import net.minecraft.server.v1_9_R1.PacketPlayOutMount;
-import net.minecraft.server.v1_9_R1.SoundEffect;
-import net.minecraft.server.v1_9_R1.World;
+import net.minecraft.server.v1_9_R2.EntityDamageSource;
+import net.minecraft.server.v1_9_R2.EntityPlayer;
+import net.minecraft.server.v1_9_R2.AxisAlignedBB;
+import net.minecraft.server.v1_9_R2.DamageSource;
+import net.minecraft.server.v1_9_R2.Entity;
+import net.minecraft.server.v1_9_R2.EntitySlime;
+import net.minecraft.server.v1_9_R2.NBTTagCompound;
+import net.minecraft.server.v1_9_R2.PacketPlayOutMount;
+import net.minecraft.server.v1_9_R2.SoundEffect;
+import net.minecraft.server.v1_9_R2.World;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftEntity;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 import com.gmail.filoghost.holographicdisplays.nms.interfaces.entity.NMSEntityBase;
@@ -58,9 +58,9 @@ public class EntityNMSSlime extends EntitySlime implements NMSSlime {
 		if (resendMountPacketTicks++ > 20) {
 			resendMountPacketTicks = 0;
 
-			if (by() != null) {
+			if (bz() != null) {
 				// Send a packet near to "remind" players that the slime is riding the armor stand (Spigot bug or client bug)
-				PacketPlayOutMount mountPacket = new PacketPlayOutMount(by());
+				PacketPlayOutMount mountPacket = new PacketPlayOutMount(bz());
 	
 				for (Object obj : super.world.players) {
 					if (obj instanceof EntityPlayer) {
@@ -98,8 +98,9 @@ public class EntityNMSSlime extends EntitySlime implements NMSSlime {
 	}
 	
 	@Override
-	public void e(NBTTagCompound nbttagcompound) {
+	public NBTTagCompound e(NBTTagCompound nbttagcompound) {
 		// Do not save NBT.
+		return nbttagcompound;
 	}
 	
 	@Override
@@ -211,13 +212,13 @@ public class EntityNMSSlime extends EntitySlime implements NMSSlime {
 		Entity entity = (Entity) vehicleBase;
 		
 		try {
-			if (super.by() != null) {
-	        	Entity oldVehicle = super.by();
-	        	ReflectionUtils.setPrivateField(Entity.class, this, "as", null);
+			if (super.bz() != null) {
+	        	Entity oldVehicle = super.bz();
+	        	ReflectionUtils.setPrivateField(Entity.class, this, "at", null);
 	        	oldVehicle.passengers.remove(this);
 	        }
 
-	        ReflectionUtils.setPrivateField(Entity.class, this, "as", entity);
+	        ReflectionUtils.setPrivateField(Entity.class, this, "at", entity);
 	        entity.passengers.clear();
 	        entity.passengers.add(this);
 

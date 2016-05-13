@@ -1,17 +1,17 @@
-package com.gmail.filoghost.holographicdisplays.nms.v1_9_R1;
+package com.gmail.filoghost.holographicdisplays.nms.v1_9_R2;
 
 import java.lang.reflect.Method;
 
-import net.minecraft.server.v1_9_R1.Entity;
-import net.minecraft.server.v1_9_R1.EntityTypes;
-import net.minecraft.server.v1_9_R1.MathHelper;
-import net.minecraft.server.v1_9_R1.World;
-import net.minecraft.server.v1_9_R1.WorldServer;
+import net.minecraft.server.v1_9_R2.Entity;
+import net.minecraft.server.v1_9_R2.EntityTypes;
+import net.minecraft.server.v1_9_R2.MathHelper;
+import net.minecraft.server.v1_9_R2.World;
+import net.minecraft.server.v1_9_R2.WorldServer;
 
 import org.apache.commons.lang.NotImplementedException;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftEntity;
 import org.bukkit.inventory.ItemStack;
 
 import com.gmail.filoghost.holographicdisplays.nms.interfaces.FancyMessage;
@@ -105,7 +105,7 @@ public class NmsManagerImpl implements NMSManager {
         final int chunkX = MathHelper.floor(nmsEntity.locX / 16.0);
         final int chunkZ = MathHelper.floor(nmsEntity.locZ / 16.0);
         
-        if (!nmsWorld.getChunkProviderServer().isChunkLoaded(chunkX, chunkZ)) {
+        if (!nmsWorld.getChunkProviderServer().isLoaded(chunkX, chunkZ)) {
         	// This should never happen
             nmsEntity.dead = true;
             return false;

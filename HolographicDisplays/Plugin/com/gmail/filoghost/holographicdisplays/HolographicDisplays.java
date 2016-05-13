@@ -3,6 +3,7 @@ package com.gmail.filoghost.holographicdisplays;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.gmail.filoghost.holographicdisplays.SimpleUpdater.ResponseHandler;
@@ -20,6 +21,8 @@ import com.gmail.filoghost.holographicdisplays.metrics.MetricsLite;
 import com.gmail.filoghost.holographicdisplays.nms.interfaces.NMSManager;
 import com.gmail.filoghost.holographicdisplays.object.NamedHologram;
 import com.gmail.filoghost.holographicdisplays.object.NamedHologramManager;
+import com.gmail.filoghost.holographicdisplays.object.PluginHologram;
+import com.gmail.filoghost.holographicdisplays.object.PluginHologramManager;
 import com.gmail.filoghost.holographicdisplays.placeholder.AnimationsRegister;
 import com.gmail.filoghost.holographicdisplays.placeholder.PlaceholdersManager;
 import com.gmail.filoghost.holographicdisplays.task.BungeeCleanupTask;
@@ -56,12 +59,12 @@ public class HolographicDisplays extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		
-		// Blocks plugin reloaders and the /reload command.
-		if (instance != null) {
-			getLogger().warning("Please do not use /reload or plugin reloaders. Do \"/holograms reload\" instead.");
-			return;
+		// Warn about plugin reloaders and the /reload command.
+		if (instance != null || System.getProperty("HolographicDisplaysLoaded") != null) {
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[HolographicDisplays] Please do not use /reload or plugin reloaders. Use the command \"/holograms reload\" instead. You will receive no support for doing this operation.");
 		}
 		
+		System.setProperty("HolographicDisplaysLoaded", "true");
 		instance = this;
 		
 		// Load placeholders.yml.
@@ -131,17 +134,21 @@ public class HolographicDisplays extends JavaPlugin {
 //		} else if ("v1_8_R3".equals(version)) {
 //			is18orGreater = true;
 //			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_8_R3.NmsManagerImpl();
+//		} else if ("v1_9_R1".equals(version)) {
+//			is18orGreater = true;
+//			is19orGreater = true;
+//			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_9_R1.NmsManagerImpl();
 //		} else
-		if ("v1_9_R1".equals(version)) {
+		if ("v1_9_R2".equals(version)) {
 			is18orGreater = true;
 			is19orGreater = true;
-			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_9_R1.NmsManagerImpl();
+			nmsManager = new com.gmail.filoghost.holographicdisplays.nms.v1_9_R2.NmsManagerImpl();
 		} else {
 			printWarnAndDisable(
 				"******************************************************",
 				"     This version of HolographicDisplays can",
 				"     only work on these server versions:",
-				"     from 1.6.4 to 1.9.",
+				"     from 1.6.4 to 1.9.4.",
 				"     The plugin will be disabled.",
 				"******************************************************"
 			);
@@ -255,6 +262,9 @@ public class HolographicDisplays extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		for (NamedHologram hologram : NamedHologramManager.getHolograms()) {
+			hologram.despawnEntities();
+		}
+		for (PluginHologram hologram : PluginHologramManager.getHolograms()) {
 			hologram.despawnEntities();
 		}
 	}

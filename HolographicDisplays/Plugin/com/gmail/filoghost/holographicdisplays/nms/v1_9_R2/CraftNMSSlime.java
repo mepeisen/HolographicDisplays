@@ -1,27 +1,35 @@
-package com.gmail.filoghost.holographicdisplays.nms.v1_9_R1;
+package com.gmail.filoghost.holographicdisplays.nms.v1_9_R2;
+
+import java.util.Collection;
 
 import org.bukkit.EntityEffect;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_9_R1.CraftServer;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftItem;
+import org.bukkit.craftbukkit.v1_9_R2.CraftServer;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftSlime;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.Vector;
 
-public class CraftNMSItem extends CraftItem {
+public class CraftNMSSlime extends CraftSlime {
 
-	public CraftNMSItem(CraftServer server, EntityNMSItem entity) {
+	public CraftNMSSlime(CraftServer server, EntityNMSSlime entity) {
 		super(server, entity);
 	}
-
+	
 	// Disallow all the bukkit methods.
 	
 	@Override
 	public void remove() {
 		// Cannot be removed, this is the most important to override.
 	}
-
+	
+	// Methods from LivingEntity class
+	@Override public boolean addPotionEffect(PotionEffect effect) { return false; }
+	@Override public boolean addPotionEffect(PotionEffect effect, boolean param) { return false; }
+	@Override public boolean addPotionEffects(Collection<PotionEffect> effects) { return false; }
+	@Override public void setRemoveWhenFarAway(boolean remove) { }
+	
 	// Methods from Entity
 	@Override public void setVelocity(Vector vel) { }
 	@Override public boolean teleport(Location loc) { return false; }
@@ -36,8 +44,7 @@ public class CraftNMSItem extends CraftItem {
 	@Override public void setCustomName(String name) { }
 	@Override public void setCustomNameVisible(boolean flag) { }
 	
-	// Methods from Item
-	@Override public void setItemStack(ItemStack stack) { }
-	@Override public void setPickupDelay(int delay) { }
+	// Methods from Slime
+	@Override public void setSize(int size) { }
 	
 }
